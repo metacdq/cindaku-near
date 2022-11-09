@@ -1,18 +1,16 @@
 import 'regenerator-runtime/runtime';
-import React from 'react';
+import {useEffect, useState} from 'react';
 
-import './assets/global.css';
-
-import { EducationalText, SignInPrompt, SignOutButton } from './ui-components';
+import { EducationalText, SignInPrompt, SignOutButton } from './src/ui-components';
 
 
-export default function App({ isSignedIn, helloNEAR, wallet }) {
-  const [valueFromBlockchain, setValueFromBlockchain] = React.useState();
+export default function OldApp({ isSignedIn, helloNEAR, wallet }) {
+  const [valueFromBlockchain, setValueFromBlockchain] = useState();
 
-  const [uiPleaseWait, setUiPleaseWait] = React.useState(true);
+  const [uiPleaseWait, setUiPleaseWait] = useState(true);
 
   // Get blockchian state once on component load
-  React.useEffect(() => {
+  useEffect(() => {
     helloNEAR.getGreeting()
       .then(setValueFromBlockchain)
       .catch(alert)
