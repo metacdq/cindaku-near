@@ -1,5 +1,5 @@
 
-export default function CTA({}){
+export default function CTA({ wallet, isSignedIn }){
     return (
         <div id="mint-here" className="uni-cta uk-section uk-section-2xlarge@m uk-panel uk-overflow-hidden">
         <img
@@ -43,18 +43,29 @@ export default function CTA({}){
                 style={{ bottom: "16%", left: "-8%" }}
                 />
                 <h2 className="uk-h3 uk-heading-d1@m">Let's start minting</h2>
-                <a
-                    href="#"
-                    className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
-                    >
-                Mint For 1 Near
-                </a> &nbsp;
-                <a
-                    href="#"
-                    className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
-                    >
-                View Your Collections
-                </a>
+                { isSignedIn? (
+                    <>
+                         <a
+                            href="#"
+                            className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
+                            >
+                        Mint For 1 Near
+                        </a> &nbsp;
+                        <a
+                            href="#"
+                            className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
+                            >
+                        View Your Collections
+                        </a>
+                    </>
+                ): (
+                        <a onClick={()=> wallet.signIn() }
+                            href="#"
+                            className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
+                            >
+                            Sign In
+                        </a>
+                ) }
             </div>
             </div>
         </div>

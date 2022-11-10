@@ -9,13 +9,13 @@ import Collection from './components/Collection'
 import FAQ from './components/FAQ'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
-export default function App({}) {
+export default function App({isSignedIn, cindakuContract, wallet}) {
 
   return (
     <>
-      <ConnectWallet/>
+      {/* <ConnectWallet/> */}
       <div className="wrap">
-        <Header/>
+        <Header wallet={wallet} isSignedIn={isSignedIn}/>
         <Hero/>
         <Brands/>
          <img className="uk-width-2xsmall uk-flex-center uk-margin-auto uk-margin-medium uk-margin-large@m"
@@ -35,7 +35,7 @@ export default function App({}) {
           <FAQ/>
           <img className="uk-width-2xsmall uk-flex-center uk-margin-auto uk-margin-medium uk-margin-large@m"
             src="https://static.cindaku.com/images/divider-01.svg" alt="Divider" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 100;"/>
-          <CTA/>  
+          <CTA wallet={wallet} isSignedIn={isSignedIn}/>  
           <img className="uk-width-2xsmall uk-flex-center uk-margin-auto uk-margin-medium uk-margin-large@m"
             src="https://static.cindaku.com/images/divider-01.svg" alt="Divider" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 100;"/>
       </div>

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './src/App';
 
 // NEAR
-import { HelloNEAR } from './src/near-interface';
+import { CindakuContract } from './src/near-interface';
 import { Wallet } from './src/near-wallet';
 
 // When creating the wallet you can optionally ask to create an access key
@@ -12,14 +12,14 @@ import { Wallet } from './src/near-wallet';
 const wallet = new Wallet({ createAccessKeyFor: process.env.CONTRACT_NAME })
 
 // Abstract the logic of interacting with the contract to simplify your flow
-const helloNEAR = new HelloNEAR({ contractId: process.env.CONTRACT_NAME, walletToUse: wallet });
+const cindakuContract = new CindakuContract({ contractId: process.env.CONTRACT_NAME, walletToUse: wallet });
 
 // Setup on page load
 window.onload = async () => {
   const isSignedIn = await wallet.startUp()
  
   ReactDOM.render(
-    <App isSignedIn={isSignedIn} helloNEAR={helloNEAR} wallet={wallet} />,
+    <App isSignedIn={isSignedIn} cindakuContract={cindakuContract} wallet={wallet} />,
     document.getElementById('root')
   );
 }

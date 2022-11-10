@@ -1,6 +1,6 @@
 /* Talking with a contract often involves transforming data, we recommend you to encapsulate that logic into a class */
 
-export class HelloNEAR {
+export class CindakuContract {
   constructor({ contractId, walletToUse }) {
     this.contractId = contractId;
     this.wallet = walletToUse;    
