@@ -35,7 +35,7 @@ export default function App({isSignedIn, cindakuContract, wallet}) {
           <FAQ/>
           <img className="uk-width-2xsmall uk-flex-center uk-margin-auto uk-margin-medium uk-margin-large@m"
             src="https://static.cindaku.com/images/divider-01.svg" alt="Divider" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 100;"/>
-          <CTA wallet={wallet} isSignedIn={isSignedIn}/>  
+          <CTA wallet={wallet} isSignedIn={isSignedIn} cindakuContract={cindakuContract} />  
           <img className="uk-width-2xsmall uk-flex-center uk-margin-auto uk-margin-medium uk-margin-large@m"
             src="https://static.cindaku.com/images/divider-01.svg" alt="Divider" data-anime="opacity:[0, 1]; scale:[0, 1]; onview: true; delay: 100;"/>
       </div>

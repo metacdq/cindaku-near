@@ -30,15 +30,10 @@ test.afterEach.always(async (t) => {
   });
 });
 
-test('returns the default greeting', async (t) => {
-  const { contract } = t.context.accounts;
-  const message: string = await contract.view('get_greeting', {});
-  t.is(message, 'Hello');
-});
 
 test('changes the message', async (t) => {
   const { root, contract } = t.context.accounts;
-  await root.call(contract, 'set_greeting', { message: 'Howdy' });
-  const message: string = await contract.view('get_greeting', {});
-  t.is(message, 'Howdy');
+  await root.call(contract, 'nft_mint', { receiver_id: root.accountId });
+  const supply: number = await contract.view('nft_supply_for_owner', { account_id: root.accountId });
+  t.is(supply, 1 );
 });

@@ -1,5 +1,11 @@
 
-export default function CTA({ wallet, isSignedIn }){
+export default function CTA({ wallet, isSignedIn, cindakuContract }){
+    const mint=async ()=>{
+        const receiverId=wallet.accountId
+        if(receiverId){
+            cindakuContract.mint(receiverId)
+        }
+    }
     return (
         <div id="mint-here" className="uni-cta uk-section uk-section-2xlarge@m uk-panel uk-overflow-hidden">
         <img
@@ -46,7 +52,8 @@ export default function CTA({ wallet, isSignedIn }){
                 { isSignedIn? (
                     <>
                          <a
-                            href="#"
+                            href="javascript:void(0)"
+                            onClick={mint}
                             className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
                             >
                         Mint For 1 Near

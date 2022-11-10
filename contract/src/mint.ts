@@ -1,39 +1,42 @@
 // @ts-nocheck
 import { assert, near } from "near-sdk-js";
-import { Contract, NFT_METADATA_SPEC, NFT_STANDARD_NAME } from ".";
+import { BASE_DESC, BASE_NAME, Contract, NFT_METADATA_SPEC, NFT_STANDARD_NAME } from ".";
 import { internalAddTokenToOwner, refundDeposit } from "./internal";
 import { Token, TokenMetadata } from "./metadata";
 
 export function internalMint({
     contract,
-    tokenId,
-    metadata,
     receiverId,
-    perpetualRoyalties
 }:{ 
     contract: Contract, 
-    tokenId: string, 
-    metadata: TokenMetadata, 
     receiverId: string 
-    perpetualRoyalties: {[key: string]: number}
 }): void {
+
+    assert(contract.tokenMetadataById.length < 500, "All suply already minted");
     //measure the initial storage being used on the contract TODO
     let initialStorageUsage = near.storageUsage();
-
-    // create a royalty map to store in the token
+    
     let royalty: { [accountId: string]: number } = {}
 
-    // if perpetual royalties were passed into the function: TODO: add isUndefined fn
-    if (perpetualRoyalties != null) {
-        //make sure that the length of the perpetual royalties is below 7 since we won't have enough GAS to pay out that many people
-        assert(Object.keys(perpetualRoyalties).length < 7, "Cannot add more than 6 perpetual royalty amounts");
-        
-        //iterate through the perpetual royalties and insert the account and amount in the royalty map
-        Object.entries(perpetualRoyalties).forEach(([account, amount], index) => {
-            royalty[account] = amount;
-        });
-    }
+    let tokenId: String = (contract.tokenMetadataById.length+1).toString()
 
+    let issuedAt: String = new Date().getTime().toString
+
+
+    let metadata: TokenMetadata= {
+        title: `${BASE_NAME} #${tokenId}`,
+        description: BASE_DESC,
+        media: `${tokenId}.png`,
+        media_hash: null,
+        copies:  null,
+        issued_at:  issuedAt,
+        expires_at:  null,
+        starts_at:  null,
+        updated_at:  null,
+        extra:  null,
+        reference:  `${tokenId}.json`,
+        reference_hash: null,
+    }
     //specify the token struct that contains the owner ID 
     let token = new Token ({
         //set the owner ID equal to the receiver ID passed into the function

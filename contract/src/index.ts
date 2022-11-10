@@ -1,11 +1,13 @@
 
-import { NearBindgen, near, call, view, LookupMap, UnorderedMap, Vector, UnorderedSet } from 'near-sdk-js'
+import { NearBindgen, near, call, view, LookupMap, UnorderedMap, initialize } from 'near-sdk-js'
 import { NFTContractMetadata, Token, TokenMetadata, internalNftMetadata } from './metadata';
 import { internalMint } from './mint';
 import { internalNftTokens, internalSupplyForOwner, internalTokensForOwner, internalTotalSupply } from './enumeration';
 import { internalNftToken, internalNftTransfer, internalNftTransferCall, internalResolveTransfer } from './nft_core';
 import { internalNftApprove, internalNftIsApproved, internalNftRevoke, internalNftRevokeAll } from './approval';
 import { internalNftPayout, internalNftTransferPayout } from './royalty';
+import { predecessorAccountId } from 'near-sdk-js/lib/api';
+
 
 /// This spec can be treated like a version of the standard.
 export const NFT_METADATA_SPEC = "nft-1.0.0";
@@ -13,37 +15,35 @@ export const NFT_METADATA_SPEC = "nft-1.0.0";
 /// This is the name of the NFT standard we're using
 export const NFT_STANDARD_NAME = "nep171";
 
+export const BASE_NAME = "NFT AR Gen.0 "
+
+export const BASE_DESC = "Unique NFT AR can be accessed on NFT AR App. Collect, Play And Share !"
+
 @NearBindgen({})
-export class Contract {
-    owner_id: string;
-    tokensPerOwner: LookupMap<Token>;
-    tokensById: LookupMap<Token>;
-    tokenMetadataById: UnorderedMap<TokenMetadata>;
-    metadata: NFTContractMetadata;
+export class Contract{
+    owner_id="crlf.testnet";
+    tokensPerOwner: LookupMap<Token>=new LookupMap("tokensPerOwner");
+    tokensById: LookupMap<Token>=new LookupMap("tokensById");
+    tokenMetadataById: UnorderedMap<TokenMetadata>=new UnorderedMap("tokenMetadataById");
+    metadata: NFTContractMetadata={
+        spec: "nft-1.0.0",
+        name: "NFT AR",
+        symbol: "NFTAR",
+        icon: null,
+        base_uri: "",
+        reference: null,
+        reference_hash: null
+    };
 
-
-    constructor({
-        owner_id, 
-        metadata = {
-            spec: "nft-1.0.0",
-            name: "NFT Tutorial Contract",
-            symbol: "GOTEAM"
-        } 
-    }) {
-        this.owner_id = owner_id;
-        this.tokensPerOwner = new LookupMap("tokensPerOwner");
-        this.tokensById = new LookupMap("tokensById");
-        this.tokenMetadataById = new UnorderedMap("tokenMetadataById");
-        this.metadata = metadata;
+    deserialize() {
+        this.tokensPerOwner = Object.assign(new LookupMap("tokensPerOwner"), this.tokensPerOwner);
+        this.tokensById = Object.assign(new LookupMap("tokensById"), this.tokensById);
+        this.tokenMetadataById = Object.assign(new UnorderedMap("tokenMetadataById"), this.tokenMetadataById);
     }
 
-    default() {
-        return new Contract({owner_id: ''})
-    }
-
-    @call({})
-    nft_mint({ token_id, metadata, receiver_id, perpetual_royalties }) {
-        return internalMint({ contract: this, tokenId: token_id, metadata: metadata, receiverId: receiver_id, perpetualRoyalties: perpetual_royalties });
+    @call({ payableFunction: true})
+    nft_mint({ receiver_id }){
+        internalMint({ contract: this, receiverId: receiver_id});
     }
 
     @view({})
@@ -53,17 +53,17 @@ export class Contract {
 
     @call({})
     nft_transfer({ receiver_id, token_id, approval_id, memo }) {
-        return internalNftTransfer({ contract: this, receiverId: receiver_id, tokenId: token_id, approvalId: approval_id, memo: memo });
+        internalNftTransfer({ contract: this, receiverId: receiver_id, tokenId: token_id, approvalId: approval_id, memo: memo });
     }
 
     @call({})
     nft_transfer_call({ receiver_id, token_id, approval_id, memo, msg }) {
-        return internalNftTransferCall({ contract: this, receiverId: receiver_id, tokenId: token_id, approvalId: approval_id, memo: memo, msg: msg });
+        internalNftTransferCall({ contract: this, receiverId: receiver_id, tokenId: token_id, approvalId: approval_id, memo: memo, msg: msg });
     }
 
     @call({})
     nft_resolve_transfer({ authorized_id, owner_id, receiver_id, token_id, approved_account_ids, memo }) {
-        return internalResolveTransfer({ contract: this, authorizedId: authorized_id, ownerId: owner_id, receiverId: receiver_id, tokenId: token_id, approvedAccountIds: approved_account_ids, memo: memo });
+        internalResolveTransfer({ contract: this, authorizedId: authorized_id, ownerId: owner_id, receiverId: receiver_id, tokenId: token_id, approvedAccountIds: approved_account_ids, memo: memo });
     }
 
    
@@ -74,7 +74,7 @@ export class Contract {
 
     @call({})
     nft_approve({ token_id, account_id, msg }) {
-        return internalNftApprove({ contract: this, tokenId: token_id, accountId: account_id, msg: msg });
+        internalNftApprove({ contract: this, tokenId: token_id, accountId: account_id, msg: msg });
     }
 
 
@@ -85,17 +85,17 @@ export class Contract {
 
     @call({})
     nft_transfer_payout({ receiver_id, token_id, approval_id, memo, balance, max_len_payout }) {
-        return internalNftTransferPayout({ contract: this, receiverId: receiver_id, tokenId: token_id, approvalId: approval_id, memo: memo, balance: balance, maxLenPayout: max_len_payout });
+        internalNftTransferPayout({ contract: this, receiverId: receiver_id, tokenId: token_id, approvalId: approval_id, memo: memo, balance: balance, maxLenPayout: max_len_payout });
     }
 
     @call({})
     nft_revoke({ token_id, account_id }) {
-        return internalNftRevoke({ contract: this, tokenId: token_id, accountId: account_id });
+        internalNftRevoke({ contract: this, tokenId: token_id, accountId: account_id });
     }
 
     @call({})
     nft_revoke_all({ token_id }) {
-        return internalNftRevokeAll({ contract: this, tokenId: token_id });
+        internalNftRevokeAll({ contract: this, tokenId: token_id });
     }
 
     @view({})

@@ -4,7 +4,7 @@ CONTRACT_DIRECTORY=../contract
 DEV_ACCOUNT_FILE="${CONTRACT_DIRECTORY}/neardev/dev-account.env"
 
 start () {
-  echo The app is starting!
+  echo The app is starting! 
   env-cmd -f $DEV_ACCOUNT_FILE parcel index.html --open
 }
 
