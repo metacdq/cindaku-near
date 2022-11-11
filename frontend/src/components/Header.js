@@ -16,8 +16,8 @@ export default function Header({ wallet, isSignedIn }){
                     <div className="uk-navbar-right uk-flex-1 uk-flex-right">
                         <ul className="uk-navbar-nav dark:uk-text-gray-10 uk-visible@m" data-uk-scrollspy-nav="closest: li; scroll: true; offset: 80" data-uk-navbar-bound>
                             <li><a href="#uni_about">About</a></li>
-                            <li><a href="#uni_collection">Collection</a></li>
                             <li><a href="#uni_minting">How To Mint</a></li>
+                            <li><a href="#mint-here">Minting</a></li>
                         </ul>
                         <div className="uk-navbar-item">
                             <ul className="uk-subnav uk-subnav-small uk-visible@m">
