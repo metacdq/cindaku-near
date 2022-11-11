@@ -56,7 +56,7 @@ export default function CTA({ wallet, isSignedIn, cindakuContract }){
                             onClick={mint}
                             className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
                             >
-                        Mint For 1 Near
+                        Mint For Free
                         </a> &nbsp;
                         <a
                             href="#collection_modal"

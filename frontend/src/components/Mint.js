@@ -54,8 +54,7 @@ export default function Mint({}){
                         <div className="uk-panel uk-width-expand">
                             <h3 className="uk-h5 uk-h4@m">Connect your wallet</h3>
                             <p>
-                            Use Trust Wallet, Metamask or any wallet to connect to the
-                            app.
+                            Use My Near Wallet to login into NFT AR Web/App
                             </p>
                         </div>
                         </div>
@@ -74,8 +73,8 @@ export default function Mint({}){
                             </div>
                         </div>
                         <div className="uk-panel uk-width-expand">
-                            <h3 className="uk-h5 uk-h4@m">Select your quantity</h3>
-                            <p>Upload your NFTs and set a title, description and price.</p>
+                            <h3 className="uk-h5 uk-h4@m">Mint</h3>
+                            <p>Click "Mint For Free" on minting section</p>
                         </div>
                         </div>
                     </div>
@@ -95,8 +94,7 @@ export default function Mint({}){
                         <div className="uk-panel uk-width-expand">
                             <h3 className="uk-h5 uk-h4@m">Confirm transaction</h3>
                             <p>
-                            Earn ETH and BIT for all your NFTs that you sell on our
-                            marketplace.
+                                Wait until the transaction finished
                             </p>
                         </div>
                         </div>
@@ -116,7 +114,7 @@ export default function Mint({}){
                         </div>
                         <div className="uk-panel uk-width-expand">
                             <h3 className="uk-h5 uk-h4@m">Receive your NFTs</h3>
-                            <p>Latin professor at Hampden-Sydney College in Virginia.</p>
+                            <p>You received NFT and can be used on NFT AR Android</p>
                         </div>
                         </div>
                     </div>
