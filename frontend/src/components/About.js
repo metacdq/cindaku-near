@@ -16,7 +16,7 @@ export default function About({}){
                             <div className="uk-grid uk-grid-3xlarge@m uk-flex-middle uk-child-width-1-2@m" data-uk-grid="">
                                 <div>
                                     <div className="uk-panel uk-image-middle uk-overflow-hidden uk-radius uk-radius-large@m" data-anime="opacity:[0, 1]; translateX:[-24, 0]; onview: -250; delay: 200;">
-                                        <img src="https://static.cindaku.com/images/features-03.png" alt="Create your own NFT"/>
+                                        <img src="https://static.cindaku.com/images/nft_art.png" alt="Create your own NFT"/>
                                     </div>
                                 </div>
                                 <div>
