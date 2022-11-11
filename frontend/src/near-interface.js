@@ -11,6 +11,6 @@ export class CindakuContract {
   // }
 
   async mint(receiverId) {
-    return await this.wallet.callMethod({ contractId: this.contractId, method: 'nft_mint', args: { receiver_id: receiverId }, deposit: '9370000000000000000000' });
+    return await this.wallet.callMethod({ contractId: this.contractId, method: 'nft_mint', args: { receiver_id: receiverId }, deposit: '12000000000000000000000' });
   }
 }
