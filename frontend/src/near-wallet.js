@@ -40,6 +40,10 @@ export class Wallet {
     return isSignedIn;
   }
 
+  async getAccountId(){
+    return this.walletSelector.store.getState().accounts[0].accountId
+  }
+
   signIn() {
     const description = 'Please select a wallet to sign in.';
     const modal = setupModal(this.walletSelector, { contractId: this.createAccessKeyFor, description });

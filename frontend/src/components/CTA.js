@@ -1,7 +1,7 @@
 
 export default function CTA({ wallet, isSignedIn, cindakuContract }){
     const mint=async ()=>{
-        const receiverId=wallet.accountId
+        const receiverId=await wallet.getAccountId()
         if(receiverId){
             cindakuContract.mint(receiverId)
         }
