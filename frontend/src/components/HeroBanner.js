@@ -142,7 +142,7 @@ export default function HeroBanner({}){
                           <div className="uni-item-featured-image uk-panel uk-flex-middle uk-flex-center">
                             <div className="uk-panel uk-image-middle">
                               <img
-                                src="https://static.cindaku.com/images/artwork/05.jpg"
+                                src="https://static.cindaku.com/images/screen1.jpg"
                                 alt="Artwork"
                                 className="uk-radius-small uk-radius-large@m"
                               />
@@ -155,7 +155,7 @@ export default function HeroBanner({}){
                           <div className="uni-item-featured-image uk-panel uk-flex-middle uk-flex-center">
                             <div className="uk-panel uk-image-middle">
                               <img
-                                src="https://static.cindaku.com/images/artwork/13.jpg"
+                                src="https://static.cindaku.com/images/screen2.jpg"
                                 alt="Artwork"
                                 className="uk-radius-small uk-radius-large@m"
                               />
