@@ -5,7 +5,7 @@ export default function CollectionModal({ wallet,  cindakuContract }){
     const getData = async ()=>{
         const accountId=await wallet.getAccountId()
         const data=await cindakuContract.nftForOwner(accountId, 0,10)
-        console.log(data)
+        setCollections(data)
     }
     useEffect(()=>{
         getData()
@@ -28,12 +28,12 @@ export default function CollectionModal({ wallet,  cindakuContract }){
                                         return (
                                         <div className="uk-card uk-card-default">
                                             <div className="uk-card-media-top uk-flex-center uk-background-primary">
-                                                <img src="https://static.cindaku.com/nft/mask.png"/>
+                                                <img src={`https://static.cindaku.com/nft/${nft.metadata.media}`}/>
                                             </div>
                                             <div>
                                                 <div className="uk-card-body">
-                                                    <h3 className="uk-card-title">Media Left</h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                                                    <h3 className="uk-card-title">{nft.metadata.title}</h3>
+                                                    <p>{nft.metadata.description}</p>
                                                 </div>
                                             </div>
                                         </div>

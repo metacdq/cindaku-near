@@ -21,9 +21,9 @@ export const BASE_DESC = "Unique NFT AR can be accessed on NFT AR App. Collect, 
 @NearBindgen({})
 export class Contract{
     owner_id="crlf.testnet";
-    tokensPerOwner: LookupMap<UnorderedSet<String>>=new LookupMap("tokensPerOwner");
-    tokensById: LookupMap<Token>=new LookupMap("tokensById");
-    tokenMetadataById: UnorderedMap<TokenMetadata>=new UnorderedMap("tokenMetadataById");
+    tokensPerOwner: LookupMap<UnorderedSet<String>>=new LookupMap<UnorderedSet<String>>("tokensPerOwner");
+    tokensById: LookupMap<Token>=new LookupMap<Token>("tokensById");
+    tokenMetadataById: UnorderedMap<TokenMetadata>=new UnorderedMap<TokenMetadata>("tokenMetadataById");
     metadata: NFTContractMetadata={
         spec: "nft-1.0.0",
         name: "NFT AR",
@@ -35,9 +35,9 @@ export class Contract{
     };
 
     deserialize() {
-        this.tokensPerOwner = Object.assign(new LookupMap("tokensPerOwner"), this.tokensPerOwner);
-        this.tokensById = Object.assign(new LookupMap("tokensById"), this.tokensById);
-        this.tokenMetadataById = Object.assign(new UnorderedMap("tokenMetadataById"), this.tokenMetadataById);
+        this.tokensPerOwner = Object.assign(new LookupMap<UnorderedSet<String>>("tokensPerOwner"), this.tokensPerOwner);
+        this.tokensById = Object.assign(new LookupMap<Token>("tokensById"), this.tokensById);
+        this.tokenMetadataById = Object.assign(new UnorderedMap<TokenMetadata>("tokenMetadataById"), this.tokenMetadataById);
     }
 
     @call({ payableFunction: true})

@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { near, UnorderedSet } from "near-sdk-js";
+import { near, UnorderedSet, Vector } from "near-sdk-js";
 import { Contract, NFT_METADATA_SPEC, NFT_STANDARD_NAME } from ".";
 import { restoreOwners } from "./internal";
 import { JsonToken } from "./metadata";
@@ -81,12 +81,12 @@ export function internalTokensForOwner({
         return [];
     }
     
-    //where to start pagination - if we have a fromIndex, we'll use that - otherwise start from 0 index
+    // where to start pagination - if we have a fromIndex, we'll use that - otherwise start from 0 index
     let start = fromIndex ? parseInt(fromIndex) : 0;
     //take the first "limit" elements in the array. If we didn't specify a limit, use 50
     let max = limit ? limit : 50;
 
-    let keys = tokenSet.toArray();
+    let keys = UnorderedSet.reconstruct(tokenSet).toArray();
     let tokens: JsonToken[] = []
     for(let i = start; i < max; i++) {
         if(i >= keys.length) {
