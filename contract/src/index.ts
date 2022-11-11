@@ -1,12 +1,11 @@
 
-import { NearBindgen, near, call, view, LookupMap, UnorderedMap, initialize } from 'near-sdk-js'
+import { NearBindgen, near, call, view, LookupMap, UnorderedMap, initialize, UnorderedSet } from 'near-sdk-js'
 import { NFTContractMetadata, Token, TokenMetadata, internalNftMetadata } from './metadata';
 import { internalMint } from './mint';
 import { internalNftTokens, internalSupplyForOwner, internalTokensForOwner, internalTotalSupply } from './enumeration';
 import { internalNftToken, internalNftTransfer, internalNftTransferCall, internalResolveTransfer } from './nft_core';
 import { internalNftApprove, internalNftIsApproved, internalNftRevoke, internalNftRevokeAll } from './approval';
 import { internalNftPayout, internalNftTransferPayout } from './royalty';
-import { predecessorAccountId } from 'near-sdk-js/lib/api';
 
 
 /// This spec can be treated like a version of the standard.
@@ -22,7 +21,7 @@ export const BASE_DESC = "Unique NFT AR can be accessed on NFT AR App. Collect, 
 @NearBindgen({})
 export class Contract{
     owner_id="crlf.testnet";
-    tokensPerOwner: LookupMap<Token>=new LookupMap("tokensPerOwner");
+    tokensPerOwner: LookupMap<UnorderedSet<String>>=new LookupMap("tokensPerOwner");
     tokensById: LookupMap<Token>=new LookupMap("tokensById");
     tokenMetadataById: UnorderedMap<TokenMetadata>=new UnorderedMap("tokenMetadataById");
     metadata: NFTContractMetadata={

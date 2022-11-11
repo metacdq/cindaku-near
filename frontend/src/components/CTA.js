@@ -59,9 +59,9 @@ export default function CTA({ wallet, isSignedIn, cindakuContract }){
                         Mint For 1 Near
                         </a> &nbsp;
                         <a
-                            href="#"
+                            href="#collection_modal"
                             className="uk-button uk-button-small uk-button-large@m uk-button-gradient uk-margin-small-top uk-margin-large-top@m"
-                            >
+                            data-uk-toggle="" >
                         View Your Collections
                         </a>
                     </>

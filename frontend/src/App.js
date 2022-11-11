@@ -1,4 +1,3 @@
-import ConnectWallet from './components/ConnectWallet'
 import Header from './components/Header'
 import Hero from './components/HeroBanner'
 import Brands from './components/Brands'
@@ -8,12 +7,13 @@ import About from './components/About'
 import Collection from './components/Collection'
 import FAQ from './components/FAQ'
 import CTA from './components/CTA'
+import CollectionModal from './components/CollectionModal'
 import Footer from './components/Footer'
 export default function App({isSignedIn, cindakuContract, wallet}) {
 
   return (
     <>
-      {/* <ConnectWallet/> */}
+      <CollectionModal  wallet={wallet} cindakuContract={cindakuContract}/>
       <div className="wrap">
         <Header wallet={wallet} isSignedIn={isSignedIn}/>
         <Hero/>

@@ -52,17 +52,6 @@ export default function Footer({}){
               >
                 <div>
                   <ul className="uk-subnav uk-subnav-small uk-text-muted uk-flex-center">
-                    <li>
-                      <a href="privacy.html">Privacy policy</a>
-                    </li>
-                    <li>
-                      <a href="terms.html">Terms of use</a>
-                    </li>
-                    <li className="uk-margin-small-left">
-                      <a href="#" data-uk-totop="" data-uk-scroll="">
-                        <i className="uk-icon uk-icon-small unicon-chevron-up" />
-                      </a>
-                    </li>
                   </ul>
                 </div>
                 <div className="uk-flex-first@m uk-flex-center">
