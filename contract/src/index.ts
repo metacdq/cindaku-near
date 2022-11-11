@@ -30,7 +30,7 @@ export class Contract{
         name: "NFT AR",
         symbol: "NFTAR",
         icon: null,
-        base_uri: "",
+        base_uri: "https://static.cindaku.com/nft/",
         reference: null,
         reference_hash: null
     };

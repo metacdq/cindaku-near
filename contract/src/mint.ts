@@ -26,7 +26,7 @@ export function internalMint({
     let metadata: TokenMetadata= {
         title: `${BASE_NAME} #${tokenId}`,
         description: BASE_DESC,
-        media: `${tokenId}.png`,
+        media: `mask.png`,
         media_hash: null,
         copies:  null,
         issued_at:  issuedAt,
@@ -34,7 +34,7 @@ export function internalMint({
         starts_at:  null,
         updated_at:  null,
         extra:  null,
-        reference:  `${tokenId}.json`,
+        reference:  `mask.json`,
         reference_hash: null,
     }
     //specify the token struct that contains the owner ID 
