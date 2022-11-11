@@ -81,6 +81,8 @@ export function internalAddTokenToOwner(contract: Contract, accountId: string, t
     if(tokenSet == null) {
         //if the account doesn't have any tokens, we create a new unordered set
         tokenSet = new UnorderedSet("tokensPerOwner" + accountId.toString());
+    }else{
+        tokenSet = UnorderedSet.reconstruct(tokenSet)
     }
 
     //we insert the token ID into the set
